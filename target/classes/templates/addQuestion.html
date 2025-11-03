@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Question | Quiz App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+</head>
+<body class="generate-body">
+    <div class="generate-container">
+        <h1>Add Question</h1>
+        <div th:if="${questions}" th:each="q : ${questions}" class="question-preview">
+            <h3 th:text="${q.questionText}"></h3>
+            <p><strong>Type:</strong> <span th:text="${q.type}"></span></p>
+            <div th:if="${q.type == 'MCQ'}">
+                <p><strong>Options:</strong></p>  
+                <ul>
+                    <li th:text="${q.optionA}"></li>
+                    <li th:text="${q.optionB}"></li>
+                    <li th:text="${q.optionC}"></li>
+                    <li th:text="${q.optionD}"></li>
+                </ul>
+            </div>
+            <div th:if="${q.type == 'TrueFalse'}">
+                <p><strong>Options:</strong> True, False</p>
+            </div>
+            <div th:if="${q.type == 'ShortAnswer'}">
+                <p><strong>Short Answer Question</strong></p>
+            </div>
+            <p><strong>Correct Answer:</strong> <span th:text="${q.correctAnswer}"></span></p>
+            <hr>
+        </div>
+        <form th:action="@{/saveQuestion}" method="post">
+            <input type="hidden" name="quizId" th:value="${quizId}">
+            <input type="text" name="questionText" placeholder="Question Text" required>
+            <select name="type" id="type" required aria-label="Question Type">
+                <option value="MCQ">Multiple Choice</option>
+                <option value="TrueFalse">True/False</option>
+                <option value="ShortAnswer">Short Answer</option>
+            </select>
+            <div id="options">
+                <input type="text" name="optionA" placeholder="Option A">
+                <input type="text" name="optionB" placeholder="Option B">
+                <input type="text" name="optionC" placeholder="Option C">
+                <input type="text" name="optionD" placeholder="Option D">
+            </div>
+            <input type="text" name="correctAnswer" placeholder="Correct Answer" required>
+            <button type="submit">Save Question</button>
+        </form>
+        <div class="button-group">
+            <a th:href="@{/previewQuiz(quizId=${quizId})}" class="back-btn">End &amp; Preview Quiz</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Quiz | Quiz App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+</head>
+<body class="preview-body">
+    <div class="preview-container">
+        <h1>Preview Quiz: <span th:text="${quiz.title}"></span></h1>
+
+        <div th:each="q : ${questions}" class="question">
+            <h3 th:text="${q.questionText}"></h3>
+            <div th:if="${q.type == 'MCQ'}" class="options">
+                <div class="option">
+                    <input type="radio" disabled> <span th:text="${q.optionA}"></span>
+                </div>
+                <div class="option">
+                    <input type="radio" disabled> <span th:text="${q.optionB}"></span>
+                </div>
+                <div class="option">
+                    <input type="radio" disabled> <span th:text="${q.optionC}"></span>
+                </div>
+                <div class="option">
+                    <input type="radio" disabled> <span th:text="${q.optionD}"></span>
+                </div>
+            </div>
+            <div th:if="${q.type == 'TrueFalse'}" class="options">
+                <div class="option">
+                    <input type="radio" disabled> True
+                </div>
+                <div class="option">
+                    <input type="radio" disabled> False
+                </div>
+            </div>
+            <div th:if="${q.type == 'ShortAnswer'}" class="options">
+                <input type="text" placeholder="Answer" disabled aria-label="Text answer">
+            </div>
+        </div>
+
+        <div class="actions">
+            <button type="button" class="save-btn" onclick="saveQuiz()">Save Quiz</button>
+            <button type="button" onclick="window.location.href='/addQuestion?quizId=' + [[${quizId}]]">Add More Questions</button>
+            <button type="button" class="back-btn" onclick="window.location.href='/dashboard'">Back to Dashboard</button>
+        </div>
+
+        <div th:if="${quizLink}" class="link-container">
+            <p>Share this link with students:</p>
+            <a th:href="${quizLink}" th:text="${quizLink}"></a>
+        </div>
+    </div>
+</body>
+</html>

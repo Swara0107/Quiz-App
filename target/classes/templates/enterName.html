@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Name | Quiz App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+</head>
+<body class="login-signup-body">
+    <div class="card">
+        <h2>👤 Enter Your Name</h2>
+        <form th:action="@{/startQuiz}" method="post">
+            <input type="hidden" name="quizId" th:value="${quizId}">
+            <input type="text" name="studentName" placeholder="Your Name" required>
+            <button type="submit">Start Quiz</button>
+        </form>
+        <p class="error" th:text="${error}"></p>
+    </div>
+</body>
+</html>

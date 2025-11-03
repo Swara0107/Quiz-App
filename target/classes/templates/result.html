@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result | Quiz App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+</head>
+<body class="result-body">
+    <div class="result-card">
+        <h2>Quiz Completed!</h2>
+        <p>Thank you, <span th:text="${studentName}"></span></p>
+        <div class="score">
+            <span th:text="${score}"></span>/<span th:text="${total}"></span>
+        </div>
+        <p>Your score: <span th:text="${score}"></span> out of <span th:text="${total}"></span></p>
+        <button type="button" onclick="window.location.href='/'">Back to Home</button>
+    </div>
+</body>
+</html>

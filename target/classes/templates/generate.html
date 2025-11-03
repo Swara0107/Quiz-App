@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz | Quiz App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+</head>
+<body class="generate-body">
+    <div class="generate-container">
+        <h1>📝 Create New Quiz</h1>
+        <form th:action="@{/createQuiz}" method="post">
+            <input type="text" name="title" placeholder="Quiz Title" required>
+            <button type="submit">Create Quiz</button>
+        </form>
+        <button type="button" class="back-btn" onclick="window.location.href='/dashboard'">Back to Dashboard</button>
+    </div>
+</body>
+</html>

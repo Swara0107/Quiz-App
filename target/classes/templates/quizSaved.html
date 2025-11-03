@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Saved | Quiz App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+</head>
+<body class="quiz-saved-body">
+    <div class="card">
+        <h2>Quiz Saved Successfully! 🎉</h2>
+        <p>Your quiz has been saved. Share this link with students:</p>
+        <input type="text" th:value="${quizLink}" readonly id="quizLink" aria-label="Quiz Link">
+        <button type="button" onclick="copyLink()">Copy Link</button>
+        <br><br>
+        <a th:href="@{/dashboard}">Back to Dashboard</a>
+    </div>
+    <script>
+        function copyLink() {
+            const link = document.getElementById('quizLink');
+            link.select();
+            document.execCommand('copy');
+            alert('Link copied to clipboard!');
+        }
+    </script>
+</body>
+</html>

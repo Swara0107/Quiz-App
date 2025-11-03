@@ -1,0 +1,17 @@
+com\example\quizapp\controller\AuthController.class
+com\example\quizapp\controller\ReportController.class
+com\example\quizapp\service\AttemptService.class
+com\example\quizapp\controller\DashboardController.class
+com\example\quizapp\repository\UserRepository.class
+com\example\quizapp\service\UserService.class
+com\example\quizapp\service\QuizService.class
+com\example\quizapp\model\Attempt.class
+com\example\quizapp\controller\QuizController.class
+com\example\quizapp\model\User.class
+com\example\quizapp\model\Question.class
+com\example\quizapp\service\QuestionService.class
+com\example\quizapp\repository\AttemptRepository.class
+com\example\quizapp\repository\QuestionRepository.class
+com\example\quizapp\model\Quiz.class
+com\example\quizapp\repository\QuizRepository.class
+com\example\quizapp\QuizAppApplication.class
