@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attend Quiz | Quiz App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+</head>
+<body class="attend-body">
+    <div class="attend-container">
+        <h1>Quiz: <span th:text="${quiz.title}"></span></h1>
+        <form th:action="@{/submitQuiz}" method="post">
+            <input type="hidden" name="quizId" th:value="${quiz.id}">
+            <input type="hidden" name="studentName" th:value="${studentName}">
+
+            <div th:each="q, iterStat : ${questions}" class="attend-question">
+                <h3 th:text="${iterStat.index + 1} + '. ' + ${q.questionText}"></h3>
+                <div th:if="${q.type == 'MCQ'}" class="attend-options">
+                    <div class="attend-option">
+                        <input type="radio" th:name="'q' + ${q.id}" value="A" required>
+                        <label th:text="${q.optionA}"></label>
+                    </div>
+                    <div class="attend-option">
+                        <input type="radio" th:name="'q' + ${q.id}" value="B">
+                        <label th:text="${q.optionB}"></label>
+                    </div>
+                    <div class="attend-option">
+                        <input type="radio" th:name="'q' + ${q.id}" value="C">
+                        <label th:text="${q.optionC}"></label>
+                    </div>
+                    <div class="attend-option">
+                        <input type="radio" th:name="'q' + ${q.id}" value="D">
+                        <label th:text="${q.optionD}"></label>
+                    </div>
+                </div>
+                <div th:if="${q.type == 'TrueFalse'}" class="attend-options">
+                    <div class="attend-option">
+                        <input type="radio" th:name="'q' + ${q.id}" value="True" required>
+                        <label>True</label>
+                    </div>
+                    <div class="attend-option">
+                        <input type="radio" th:name="'q' + ${q.id}" value="False">
+                        <label>False</label>
+                    </div>
+                </div>
+                <div th:if="${q.type == 'ShortAnswer'}" class="attend-options">
+                    <input type="text" th:name="'q' + ${q.id}" placeholder="Your answer" required aria-label="Text answer">
+                </div>
+            </div>
+
+            <div class="attend-actions">
+                <button type="submit" class="submit-btn">Submit Quiz</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

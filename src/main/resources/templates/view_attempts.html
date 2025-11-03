@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Attempts | Quiz App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+</head>
+<body class="attempts-body">
+    <div class="attempts-container">
+        <h2>Quiz Attempts</h2>
+        <table class="attempts-table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Score</th>
+                    <th>Quiz ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="a : ${attempts}">
+                    <td th:text="${a.studentName}"></td>
+                    <td th:text="${a.score}"></td>
+                    <td th:text="${a.quiz.id}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="back-section">
+            <button type="button" onclick="window.location.href='/dashboard'">Back</button>
+        </div>
+    </div>
+</body>
+</html>

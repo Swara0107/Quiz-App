@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Question Confirmation | Quiz App</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="generate-body">
+    <div class="generate-container">
+        <h1>Question Added Successfully!</h1>
+        <p>What would you like to do next?</p>
+        <div class="button-group">
+            <button type="button" onclick="window.location.href='/addQuestion?quizId=' + [[${quizId}]]">Add Another Question</button>
+            <button type="button" class="back-btn" onclick="window.location.href='/previewQuiz?quizId=' + [[${quizId}]]">End & Preview Quiz</button>
+        </div>
+    </div>
+</body>
+</html>
